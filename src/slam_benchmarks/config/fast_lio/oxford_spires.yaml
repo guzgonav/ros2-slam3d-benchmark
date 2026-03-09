@@ -1,0 +1,44 @@
+/**:
+  ros__parameters:
+    common:
+      lid_topic: "/hesai/pandar"
+      imu_topic: "/alphasense_driver_ros/imu"
+      time_sync_en: false
+      time_offset_lidar_to_imu: 0.0
+
+    preprocess:
+      lidar_type: 2       # 1=Livox CustomMsg, 2=standard PointCloud2 (Hesai)
+      scan_line: 64
+      blind: 0.5
+      timestamp_unit: 0   # 0=seconds
+      scan_rate: 10
+
+    feature_extract_enable: false
+    point_filter_num: 3
+
+    mapping:
+      acc_cov: 0.0011002607647952406
+      gyr_cov: 0.00022632861789099884
+      b_acc_cov: 0.0000339071062778
+      b_gyr_cov: 0.000008252445860125
+      fov_degree: 360.0
+      det_range: 60.0
+      extrinsic_est_en: false
+      # T_imu_lidar = inv(T_cam0_imu) x T_cam0_lidar (from Oxford Spires calibration)
+      extrinsic_T: [-0.0006517087, -0.0155103426, 0.0846326578]
+      extrinsic_R: [-0.0166380457, -0.9998601056,  0.0017159809,
+                     0.9998552573, -0.0166318136,  0.0035843144,
+                    -0.0035552731,  0.0017753685,  0.9999921040]
+
+    publish:
+      path_en: true
+      scan_publish_en: true
+      dense_publish_en: true
+      scan_bodyframe_pub_en: true
+      map_en: true
+
+    map_file_path: "/home/guzman/slam_algorithms_ws/maps/oxford_spires.pcd"
+
+    pcd_save:
+      pcd_save_en: true
+      interval: -1

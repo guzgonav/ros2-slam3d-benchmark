@@ -91,7 +91,37 @@ ros2 bag play /path/to/bag.db3 --clock \
 
 Fixed frame: `camera_init`
 
-Suggested displays:
-- `PointCloud2` → `/cloud_registered`
-- `Path` → `/path`
-- `TF`
+| Display | Topic | Notes |
+|---|---|---|
+| `PointCloud2` | `/Laser_map` | Full accumulated map, updates ~1 Hz |
+| `PointCloud2` | `/cloud_registered` | Current scan only (not the map) |
+| `Path` | `/path` | Odometry trajectory |
+| `TF` | — | |
+
+> `/cloud_registered` shows only the latest scan reprojected into world frame — it moves with the robot and does **not** accumulate. Use `/Laser_map` to visualize the growing map.
+
+### Saving the map
+
+Trigger a save while the node is running:
+
+```bash
+ros2 service call /map_save std_srvs/srv/Trigger
+```
+
+Output: `maps/oxford_spires.pcd` (relative to workspace root).
+
+Config controls:
+
+```yaml
+map_file_path: "/home/guzman/slam_algorithms_ws/maps/oxford_spires.pcd"
+
+pcd_save:
+  pcd_save_en: true
+  interval: -1   # -1 = save all points on service call; >0 = auto-save every N scans
+```
+
+Visualize the saved file:
+
+```bash
+pcl_viewer /home/guzman/slam_algorithms_ws/maps/oxford_spires.pcd
+```
