@@ -1,0 +1,23 @@
+odometry_node:
+  ros__parameters:
+    odom_frame: "odom"
+    base_frame: "base_link"
+
+    kiss_slam:
+      odometry:
+        preprocessing:
+          max_range: 200.0  # Hesai QT64: ±2cm accuracy up to 200m
+          min_range: 0.5
+          deskew: true
+        registration:
+          max_num_iterations: 500
+          convergence_criterion: 0.0001
+          max_num_threads: 0
+        adaptive_threshold:
+          fixed_threshold: -1.0   # -1.0 = null (adaptive)
+          initial_threshold: 2.0
+          min_motion_th: 0.1
+
+      local_mapper:
+        voxel_size: 0.2
+        splitting_distance: 3.0

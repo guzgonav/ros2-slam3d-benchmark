@@ -9,3 +9,6 @@
 	path = src/livox_ros_driver2
 	url = https://github.com/Ericsii/livox_ros_driver2.git
 	branch = feature/use-standard-unit
+[submodule "src/kiss-slam-ros2"]
+	path = src/kiss-slam-ros2
+	url = https://github.com/abwerby/kiss-slam-ros2.git

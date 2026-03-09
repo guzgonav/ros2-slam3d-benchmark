@@ -3,7 +3,7 @@ project(slam_benchmarks)
 
 find_package(ament_cmake REQUIRED)
 
-install(DIRECTORY config launch
+install(DIRECTORY config launch rviz scripts
   DESTINATION share/${PROJECT_NAME}
 )
 

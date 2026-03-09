@@ -4,3 +4,9 @@ log/
 .cache/
 *.pyc
 __pycache__/
+
+# Ignore map files but track directory structure via .gitkeep
+maps/**
+!maps/*/
+!maps/*/.gitkeep
+
